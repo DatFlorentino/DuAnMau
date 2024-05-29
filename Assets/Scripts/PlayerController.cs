@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     Animator anim;
     private float gravityScaleAtStart;
+    private bool isAlive;
 
 
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
         anim = GetComponent<Animator>();
         gravityScaleAtStart = rig.gravityScale;
-
+        isAlive = true;
     }
         // Update is called once per frame
         void Update()
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         Run();
         Flip();
         ClimbLadder();
+        Die();
     }
 
     void Run()
@@ -56,12 +58,20 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue value)
     {
+        if (!isAlive)
+        {
+            return;
+        }
         moveInput = value.Get<Vector2>();
         Debug.Log(moveInput);
     }
 
     void OnJump(InputValue value)
     {
+        if (!isAlive)
+        {
+            return;
+        }
         var isTouchingGround = rig.IsTouchingLayers(LayerMask.GetMask("Ground"));
         if (!isTouchingGround) return;
         if (value.isPressed)
@@ -87,5 +97,14 @@ public class PlayerController : MonoBehaviour
         // tat gravity khi leo thang
         rig.gravityScale = 0;
     }
-
+    void Die()
+    {
+        var isTouchingEnemy = rig.IsTouchingLayers(LayerMask.GetMask("Enemy"));
+        if (isTouchingEnemy)
+        {
+            isAlive = false;
+            anim.SetTrigger("Dying");
+            rig.velocity = new Vector2(0, 0);
+        }
+    }
 }
