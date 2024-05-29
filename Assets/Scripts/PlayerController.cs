@@ -1,5 +1,7 @@
-using UnityEngine.InputSystem;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,8 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float climbSpeed = 5f;
     CapsuleCollider2D col;
     float startgravityscale;
+<<<<<<< HEAD
+=======
     Animator anim;
     private float gravityScaleAtStart;
+>>>>>>> 290a4f1 (Run+Jump+Climb)
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +25,14 @@ public class PlayerController : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
         startgravityscale = rig.gravityScale;
+<<<<<<< HEAD
+=======
         anim = GetComponent<Animator>();
         gravityScaleAtStart = rig.gravityScale;
+>>>>>>> 290a4f1 (Run+Jump+Climb)
     }
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void Update()
     {
         Run();
         Flip();
@@ -34,17 +42,16 @@ public class PlayerController : MonoBehaviour
     void Run()
     {
         rig.velocity = new Vector2(moveInput.x * speed, rig.velocity.y);
-        bool havemove = Mathf.Abs(moveInput.x) > Mathf.Epsilon;
-        anim.SetBool("isRunning", havemove);
+        bool havemove = Mathf.Abs(rig.velocity.x) > Mathf.Epsilon;
     }
 
     void Flip()
     {
-        bool havemove = Mathf.Abs(moveInput.x) > Mathf.Epsilon;
+        bool havemove = Mathf.Abs(rig.velocity.x) > Mathf.Epsilon;
 
         if (havemove)
         {
-            transform.localScale = new Vector2(Mathf.Sign(moveInput.x), 1f);
+            transform.localScale = new Vector2(Mathf.Sign(rig.velocity.x), 1f);
         }
     }
 
@@ -52,13 +59,10 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
         Debug.Log(moveInput);
-
     }
 
     void OnJump(InputValue value)
     {
-        var isTouchingGround = col.IsTouchingLayers(LayerMask.GetMask("Ground"));
-        if (!isTouchingGround) return;
         if (value.isPressed)
         {
             rig.velocity += new Vector2(0f, jumpspeed);

@@ -41,6 +41,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
+=======
   - name: Background
     uniqueID: 2036511505
     locked: 0
@@ -56,3 +58,4 @@ TagManager:
   - name: Player
     uniqueID: 3719627327
     locked: 0
+>>>>>>> 290a4f1 (Run+Jump+Climb)
