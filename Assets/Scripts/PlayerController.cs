@@ -12,11 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float climbSpeed = 5f;
     CapsuleCollider2D col;
     float startgravityscale;
-<<<<<<< HEAD
-=======
+
     Animator anim;
     private float gravityScaleAtStart;
->>>>>>> 290a4f1 (Run+Jump+Climb)
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +24,10 @@ public class PlayerController : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
         startgravityscale = rig.gravityScale;
-<<<<<<< HEAD
-=======
+
         anim = GetComponent<Animator>();
         gravityScaleAtStart = rig.gravityScale;
->>>>>>> 290a4f1 (Run+Jump+Climb)
+
     }
         // Update is called once per frame
         void Update()
