@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float climbSpeed = 5f;
     CapsuleCollider2D col;
     float startgravityscale;
-    
+
     Animator anim;
     private float gravityScaleAtStart;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         rig.velocity = new Vector2(moveInput.x * speed, rig.velocity.y);
         bool havemove = Mathf.Abs(rig.velocity.x) > Mathf.Epsilon;
+        anim.SetBool("isRunning", havemove);
     }
 
     void Flip()
@@ -60,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
     void OnJump(InputValue value)
     {
+        var isTouchingGround = rig.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        if (!isTouchingGround) return;
         if (value.isPressed)
         {
             rig.velocity += new Vector2(0f, jumpspeed);
