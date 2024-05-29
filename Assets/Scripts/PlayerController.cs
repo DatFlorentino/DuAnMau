@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,9 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     private float gravityScaleAtStart;
     private bool isAlive;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform gun;
+    
 
 
     // Start is called before the first frame update
@@ -77,6 +81,32 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed)
         {
             rig.velocity += new Vector2(0f, jumpspeed);
+        }
+    }
+
+    void OnFire(InputValue value)
+    {
+        if (!isAlive)
+        {
+            return;
+        }
+        if (value.isPressed)
+        {
+            Debug.Log(">>>>> Fire");
+            //tao ra vien dan tai vi tri sung
+            var oneBullet = Instantiate(bullet, gun.position, transform.rotation);
+            //cung cap velocity cho vien dan tuy theo huong cua nhan vat
+            if (transform.localScale.x < 0)
+            {
+                oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-15, 0);
+               
+            }
+            else
+            {
+                oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(15, 0);
+            }
+            // huy vien dan sau 2 giay
+            Destroy(oneBullet, 2);
         }
     }
     // leo thang
