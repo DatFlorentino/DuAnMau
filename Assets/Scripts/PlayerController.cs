@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
     }
     void Die()
     {
-        var isTouchingEnemy = rig.IsTouchingLayers(LayerMask.GetMask("Enemy"));
+        var isTouchingEnemy = rig.IsTouchingLayers(LayerMask.GetMask("Enemy", "Trap"));
         if (isTouchingEnemy)
         {
             isAlive = false;
