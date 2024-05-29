@@ -47,3 +47,9 @@ TagManager:
   - name: Platform
     uniqueID: 737442881
     locked: 0
+  - name: Water
+    uniqueID: 1880901847
+    locked: 0
+  - name: Player
+    uniqueID: 3719627327
+    locked: 0
