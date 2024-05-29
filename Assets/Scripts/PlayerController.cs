@@ -7,9 +7,11 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rig;
     [SerializeField] float speed = 10f;
     [SerializeField] float jumpspeed = 5f;
+    [SerializeField] float climbSpeed = 5f;
     CapsuleCollider2D col;
     float startgravityscale;
     Animator anim;
+    private float gravityScaleAtStart;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +21,14 @@ public class PlayerController : MonoBehaviour
         col = GetComponent<CapsuleCollider2D>();
         startgravityscale = rig.gravityScale;
         anim = GetComponent<Animator>();
+        gravityScaleAtStart = rig.gravityScale;
     }
     // Update is called once per frame
     void Update()
     {
         Run();
         Flip();
+        ClimbLadder();
     }
 
     void Run()
@@ -60,6 +64,23 @@ public class PlayerController : MonoBehaviour
             rig.velocity += new Vector2(0f, jumpspeed);
         }
     }
-
+    // leo thang
+    void ClimbLadder()
+    {
+        var isTouchingLadder = col.IsTouchingLayers(LayerMask.GetMask("Climbing"));
+        if (!isTouchingLadder)
+        {
+            rig.gravityScale = gravityScaleAtStart;
+            anim.SetBool("isClimbing", false);
+            return;
+        }
+        var ClimbVelocity = new Vector2 (rig.velocity.x, moveInput.y * climbSpeed);
+        rig.velocity = ClimbVelocity;
+        // dieu khien animation leo thang
+        var playerHasVerticalSpeed = Mathf.Abs(rig.velocity.y) > Mathf.Epsilon;
+        anim.SetBool("isClimbing", playerHasVerticalSpeed);
+        // tat gravity khi leo thang
+        rig.gravityScale = 0;
+    }
 
 }
