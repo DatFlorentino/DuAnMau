@@ -63,4 +63,8 @@ public class GameController : MonoBehaviour
             ResetGame();
         }
     }
+    public int GetScore()
+    {
+        return score;
+    }
 }
