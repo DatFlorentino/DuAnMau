@@ -135,6 +135,8 @@ public class PlayerController : MonoBehaviour
             isAlive = false;
             anim.SetTrigger("Dying");
             rig.velocity = new Vector2(0, 0);
+            //Xu ly die
+            FindObjectOfType<GameController>().ProcessPlayerDeath();
         }
     }
 }
