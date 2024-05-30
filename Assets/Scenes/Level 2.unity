@@ -2014,6 +2014,7 @@ GameObject:
   - component: {fileID: 1643301609}
   - component: {fileID: 1643301608}
   - component: {fileID: 1643301607}
+  - component: {fileID: 1643301613}
   - component: {fileID: 1643301612}
   m_Layer: 0
   m_Name: Player
@@ -2200,11 +2201,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1643301606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6e9c693e27a1047bf0e5385e5ed578, type: 3}
+  m_Script: {fileID: 11500000, guid: 013c16659c154b04f8395b1c9419879c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpspeed: 20
+  jumpspeed: 5
+  climbSpeed: 5
+  bullet: {fileID: 0}
+  gun: {fileID: 0}
+--- !u!114 &1643301613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643301606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6e9c693e27a1047bf0e5385e5ed578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1660491362
 GameObject:
   m_ObjectHideFlags: 0
