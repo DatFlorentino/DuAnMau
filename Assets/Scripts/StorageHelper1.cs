@@ -16,7 +16,7 @@
             {
                 plays = new List<GameData>()
             };
-            //doc chuoi tu file
+
             string dataAsJson = StorageManager1.LoadFromFile(filename);
             if (dataAsJson != null)
             {
