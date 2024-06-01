@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
     {
         if (coinText != null)  // Kiểm tra xem coinText có được gán chưa
         {
-            coinText.text = "Thu Thập Coins: " + currentCoins + "/" + coinsToCollect;
+            coinText.text = "Nhiệm vụ: \n Thu Thập Coins: " + currentCoins + "/" + coinsToCollect;
         }
         else
         {
