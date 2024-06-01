@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 282340721272066666}
   m_Layer: 13
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinPickup: {fileID: 8300000, guid: 691c37008f739ab4d9691d109115145f, type: 3}
+  CoinValue: 50
 --- !u!58 &3937008048817372283
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -1,17 +1,20 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] int score = 0;
-    [SerializeField] int live = 0;
-
+    [SerializeField] int live = 3;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI liveText;
+
+    [SerializeField] int coinsToCollect = 20;
+    private int currentCoins = 0;
+    [SerializeField] int rewardPoints = 100;
+    [SerializeField] TextMeshProUGUI coinText; // UI Text hiển thị số lần nhặt coin
 
     private void Awake()
     {
@@ -30,6 +33,7 @@ public class GameController : MonoBehaviour
     {
         liveText.text = live.ToString();
         scoreText.text = score.ToString();
+        UpdateCoinText();
     }
 
     public void AddScore(int scoreToAdd)
@@ -63,8 +67,41 @@ public class GameController : MonoBehaviour
             ResetGame();
         }
     }
+
     public int GetScore()
     {
         return score;
+    }
+
+    public void CollectCoin(int coinValue)
+    {
+        AddScore(coinValue); // Cộng điểm từ giá trị của coin
+        currentCoins += 1; // Tăng số lần nhặt coin lên 1
+        UpdateCoinText();
+
+        if (currentCoins >= coinsToCollect)
+        {
+            RewardPlayer();
+            currentCoins = 0; // Reset số lần nhặt coin
+            UpdateCoinText(); // Cập nhật UI sau khi reset
+        }
+    }
+
+    private void RewardPlayer()
+    {
+        AddScore(rewardPoints); // Thưởng điểm cho người chơi
+        Debug.Log("Player rewarded with " + rewardPoints + " points for collecting " + coinsToCollect + " coins.");
+    }
+
+    private void UpdateCoinText()
+    {
+        if (coinText != null)  // Kiểm tra xem coinText có được gán chưa
+        {
+            coinText.text = "Thu Thập Coins: " + currentCoins + "/" + coinsToCollect;
+        }
+        else
+        {
+            Debug.LogError("Coin Text UI is not assigned in the GameController script.");
+        }
     }
 }
