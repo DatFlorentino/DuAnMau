@@ -137,7 +137,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f37c636d51c683b4da941b68b10937ab, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -182,7 +182,7 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.6875, y: 0.875}
-  m_Direction: 0
+  m_Direction: 1
 --- !u!95 &3655535177981177732
 Animator:
   serializedVersion: 5
@@ -221,6 +221,11 @@ MonoBehaviour:
   climbSpeed: 5
   bullet: {fileID: 3016947744956535808, guid: 55df7c0fb2d4b64478a1cc6f6e72ba34, type: 3}
   gun: {fileID: 1889668419300712120}
+  swimSpeed: 5
+  swimDrag: 1
+  normalDrag: 5
+  oxygenBar: {fileID: 6166478659094071014, guid: 0e0bb5a6744e6234f9bd0dab934704b5, type: 3}
+  maxOxygen: 20
 --- !u!114 &3515339303906253034
 MonoBehaviour:
   m_ObjectHideFlags: 0

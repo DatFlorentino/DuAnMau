@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;  // Thêm thư viện này để sử dụng UI
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -26,6 +26,11 @@ public class PlayerController : MonoBehaviour
     public float normalDrag = 5f;
     private bool isInWater = false;
 
+    // Oxygen variables
+    public Slider oxygenBar;
+    public float maxOxygen = 10f;
+    private float currentOxygen;
+
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -35,6 +40,13 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         gravityScaleAtStart = rig.gravityScale;
         isAlive = true;
+
+        // Initialize oxygen
+        currentOxygen = maxOxygen;
+        oxygenBar.maxValue = maxOxygen;
+        oxygenBar.value = currentOxygen;
+
+        Debug.Log("Game started. isAlive: " + isAlive + ", currentOxygen: " + currentOxygen);
     }
 
     void Update()
@@ -47,12 +59,18 @@ public class PlayerController : MonoBehaviour
         Run();
         Flip();
         ClimbLadder();
-        Die();
 
         if (isInWater)
         {
             Swim();
+            HandleOxygen();
         }
+        else
+        {
+            currentOxygen = maxOxygen;
+            oxygenBar.value = currentOxygen;
+        }
+        HandleOxygen();
     }
 
     void Run()
@@ -86,6 +104,22 @@ public class PlayerController : MonoBehaviour
         rig.drag = swimDrag;
     }
 
+    private void HandleOxygen()
+    {
+        if (isInWater) // Kiểm tra nếu đang ở trong nước
+        {
+            currentOxygen -= Time.deltaTime;
+            oxygenBar.value = currentOxygen;
+
+            Debug.Log("Oxygen level: " + currentOxygen);
+
+            if (currentOxygen <= 0)
+            {
+                Die();
+            }
+        }
+}
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Water"))
@@ -94,6 +128,13 @@ public class PlayerController : MonoBehaviour
             rig.gravityScale = 0f; // Vô hiệu hóa trọng lực khi bơi
             rig.drag = swimDrag;
             anim.SetBool("isSwimming", true);
+
+            Debug.Log("Entered water. currentOxygen: " + currentOxygen);
+        }
+        else if (collision.gameObject.CompareTag("Trap") || collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
+        {
+            Debug.Log("Hit trap. Collision with: " + collision.gameObject.name);
+            Die();
         }
     }
 
@@ -105,6 +146,12 @@ public class PlayerController : MonoBehaviour
             rig.gravityScale = gravityScaleAtStart; // Khôi phục trọng lực khi không bơi
             rig.drag = normalDrag;
             anim.SetBool("isSwimming", false);
+
+            // Reset oxygen when exiting water
+            currentOxygen = maxOxygen;
+            oxygenBar.value = currentOxygen;
+
+            Debug.Log("Exited water. currentOxygen: " + currentOxygen);
         }
     }
 
@@ -125,7 +172,7 @@ public class PlayerController : MonoBehaviour
         }
         if (isInWater) // Nhảy trong nước
         {
-            rig.velocity = new Vector2(rig.velocity.x, jumpspeed = 18f);
+            rig.velocity = new Vector2(rig.velocity.x, jumpspeed);
         }
         else
         {
@@ -177,13 +224,16 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        var isTouchingEnemy = rig.IsTouchingLayers(LayerMask.GetMask("Enemy", "Trap"));
-        if (isTouchingEnemy)
+        if (!isAlive)
         {
-            isAlive = false;
-            anim.SetTrigger("Dying");
-            rig.velocity = Vector2.zero;
-            FindObjectOfType<GameController>().ProcessPlayerDeath();
+            return;
         }
+
+        isAlive = false;
+        anim.SetTrigger("Dying");
+        rig.velocity = Vector2.zero;
+        FindObjectOfType<GameController>().ProcessPlayerDeath();
+
+        Debug.Log("Player died.");
     }
 }
