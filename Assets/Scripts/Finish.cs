@@ -4,11 +4,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DefaultNameSpace;
-using GameDataSM = SuDungChoSM.GameData;
-using GameDataPlayedSM = SuDungChoSM.GameDataPlayed;
 
-namespace Finish
+namespace FinishNamespace
 {
     public class Finish : MonoBehaviour
     {
@@ -16,9 +13,15 @@ namespace Finish
         [SerializeField] GameObject finishCanvas;
 
         private StorageHelper storageHelper;
-        private GameDataPlayedSM played; // Sử dụng alias
+        private GameDataPlayed played;
 
         [SerializeField] GameObject row;
+
+        private void Awake()
+        {
+            // Đảm bảo rằng Finish không bị phá hủy khi tải lại cảnh
+            DontDestroyOnLoad(gameObject);
+        }
 
         private void Start()
         {
@@ -35,7 +38,7 @@ namespace Finish
                 finishCanvas.SetActive(true);
                 // lưu thành tích của người chơi
                 var score = FindObjectOfType<GameController>().GetScore();
-                var gameData = new GameDataSM() // Sử dụng alias
+                var gameData = new GameData()
                 {
                     score = score,
                     timePlayed = DateTime.Now.ToString("yyyy-MM-dd")

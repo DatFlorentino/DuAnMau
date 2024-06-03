@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
     [SerializeField] int rewardPoints = 100;
     [SerializeField] TextMeshProUGUI coinText; // UI Text hiển thị số lần nhặt coin
 
+    private HashSet<string> collectedCoins = new HashSet<string>(); // Lưu trữ các coin đã bị thu thập
+
     private void Awake()
     {
         var numGameSessions = FindObjectsOfType<GameController>().Length;
@@ -73,10 +75,11 @@ public class GameController : MonoBehaviour
         return score;
     }
 
-    public void CollectCoin(int coinValue)
+    public void CollectCoin(int coinValue, string coinID)
     {
         AddScore(coinValue); // Cộng điểm từ giá trị của coin
         currentCoins += 1; // Tăng số lần nhặt coin lên 1
+        collectedCoins.Add(coinID); // Lưu ID của coin đã bị thu thập
         UpdateCoinText();
 
         if (currentCoins >= coinsToCollect)
@@ -97,11 +100,16 @@ public class GameController : MonoBehaviour
     {
         if (coinText != null)  // Kiểm tra xem coinText có được gán chưa
         {
-            coinText.text = "Nhiệm vụ: \n Thu Thập Coins: " + currentCoins + "/" + coinsToCollect;
+            coinText.text = "Coins: " + currentCoins + "/" + coinsToCollect;
         }
         else
         {
             Debug.LogError("Coin Text UI is not assigned in the GameController script.");
         }
+    }
+
+    public bool IsCoinCollected(string coinID)
+    {
+        return collectedCoins.Contains(coinID);
     }
 }
