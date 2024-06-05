@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Water
+  - Trap
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - Enemy
   - Trap
   - Bullet
-  - 
+  - Interact
   - 
   - 
   - 
@@ -62,6 +65,9 @@ TagManager:
     locked: 0
   - name: Bullet
     uniqueID: 3452283139
+    locked: 0
+  - name: Interact
+    uniqueID: 3613407289
     locked: 0
   - name: Player
     uniqueID: 3742474451
