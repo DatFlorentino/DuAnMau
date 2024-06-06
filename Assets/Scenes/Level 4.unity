@@ -76860,7 +76860,7 @@ GameObject:
   - component: {fileID: 1330087689}
   - component: {fileID: 1330087688}
   - component: {fileID: 1330087687}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Trap
   m_TagString: Trap
   m_Icon: {fileID: 0}
