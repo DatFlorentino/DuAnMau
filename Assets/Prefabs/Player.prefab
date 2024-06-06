@@ -223,7 +223,7 @@ MonoBehaviour:
   gun: {fileID: 1889668419300712120}
   swimSpeed: 5
   swimDrag: 1
-  normalDrag: 5
+  normalDrag: 1
   oxygenBar: {fileID: 0}
   maxOxygen: 40
 --- !u!114 &3515339303906253034
