@@ -17,7 +17,11 @@ GameObject:
   - component: {fileID: 3544312383632736190}
   m_Layer: 10
   m_Name: Enemy
+<<<<<<< HEAD
   m_TagString: Enemy
+=======
+  m_TagString: Trap
+>>>>>>> Scene1-Dat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

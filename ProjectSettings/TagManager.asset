@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+<<<<<<< HEAD
+=======
+  - Water
+  - Trap
+  - Coin
+>>>>>>> Scene1-Dat
   layers:
   - Default
   - TransparentFX

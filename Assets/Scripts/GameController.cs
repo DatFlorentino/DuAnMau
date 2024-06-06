@@ -1,18 +1,38 @@
+<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using System;
+=======
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+>>>>>>> Scene1-Dat
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] int score = 0;
+<<<<<<< HEAD
     [SerializeField] int live = 0;
 
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI liveText;
 
+=======
+    [SerializeField] int live = 3;
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI liveText;
+
+    [SerializeField] int coinsToCollect = 20;
+    private int currentCoins = 0;
+    [SerializeField] int rewardPoints = 100;
+    [SerializeField] TextMeshProUGUI coinText; // UI Text hiển thị số lần nhặt coin
+
+    private HashSet<string> collectedCoins = new HashSet<string>(); // Lưu trữ các coin đã bị thu thập
+
+>>>>>>> Scene1-Dat
     private void Awake()
     {
         var numGameSessions = FindObjectsOfType<GameController>().Length;
@@ -30,6 +50,10 @@ public class GameController : MonoBehaviour
     {
         liveText.text = live.ToString();
         scoreText.text = score.ToString();
+<<<<<<< HEAD
+=======
+        UpdateCoinText();
+>>>>>>> Scene1-Dat
     }
 
     public void AddScore(int scoreToAdd)
@@ -63,8 +87,53 @@ public class GameController : MonoBehaviour
             ResetGame();
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Scene1-Dat
     public int GetScore()
     {
         return score;
     }
+<<<<<<< HEAD
+=======
+
+    public void CollectCoin(int coinValue, string coinID)
+    {
+        AddScore(coinValue); // Cộng điểm từ giá trị của coin
+        currentCoins += 1; // Tăng số lần nhặt coin lên 1
+        collectedCoins.Add(coinID); // Lưu ID của coin đã bị thu thập
+        UpdateCoinText();
+
+        if (currentCoins >= coinsToCollect)
+        {
+            RewardPlayer();
+            currentCoins = 0; // Reset số lần nhặt coin
+            UpdateCoinText(); // Cập nhật UI sau khi reset
+        }
+    }
+
+    private void RewardPlayer()
+    {
+        AddScore(rewardPoints); // Thưởng điểm cho người chơi
+        Debug.Log("Player rewarded with " + rewardPoints + " points for collecting " + coinsToCollect + " coins.");
+    }
+
+    private void UpdateCoinText()
+    {
+        if (coinText != null)  // Kiểm tra xem coinText có được gán chưa
+        {
+            coinText.text = "Nhiệm vụ:\n Thu Thập Coins: " + currentCoins + "/" + coinsToCollect;
+        }
+        else
+        {
+            Debug.LogError("Coin Text UI is not assigned in the GameController script.");
+        }
+    }
+
+    public bool IsCoinCollected(string coinID)
+    {
+        return collectedCoins.Contains(coinID);
+    }
+>>>>>>> Scene1-Dat
 }
