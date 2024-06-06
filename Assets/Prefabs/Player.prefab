@@ -224,8 +224,8 @@ MonoBehaviour:
   swimSpeed: 5
   swimDrag: 1
   normalDrag: 5
-  oxygenBar: {fileID: 6166478659094071014, guid: 0e0bb5a6744e6234f9bd0dab934704b5, type: 3}
-  maxOxygen: 20
+  oxygenBar: {fileID: 0}
+  maxOxygen: 40
 --- !u!114 &3515339303906253034
 MonoBehaviour:
   m_ObjectHideFlags: 0
