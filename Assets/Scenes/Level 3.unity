@@ -6008,7 +6008,7 @@ GameObject:
   - component: {fileID: 1406676595}
   - component: {fileID: 1406676594}
   - component: {fileID: 1406676593}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Trap
   m_TagString: Trap
   m_Icon: {fileID: 0}
