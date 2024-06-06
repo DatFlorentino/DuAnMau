@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  // Thêm thư viện này để sử dụng UI
+using UnityEngine.UI;  
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour

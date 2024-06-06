@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1077731698659686446
 RectTransform:
   m_ObjectHideFlags: 0
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 7253016937806192680}
   - component: {fileID: 6194524777005614575}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Coin (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -904,7 +904,7 @@ MonoBehaviour:
   live: 3
   scoreText: {fileID: 59297487988887373}
   liveText: {fileID: 6073345801260504706}
-  coinToCollect: 20
+  coinsToCollect: 20
   rewardPoints: 500
   coinText: {fileID: 6194524777005614575}
 --- !u!1 &5169956218959522002
@@ -1940,7 +1940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7296507607674278133
 RectTransform:
   m_ObjectHideFlags: 0
