@@ -2393,10 +2393,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 858084493807860287, guid: 513e4937a47f9504fa5ebb7ac488ce17, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1034083234743350728, guid: 513e4937a47f9504fa5ebb7ac488ce17, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2452,10 +2448,6 @@ PrefabInstance:
     - target: {fileID: 5116450192473893917, guid: 513e4937a47f9504fa5ebb7ac488ce17, type: 3}
       propertyPath: m_Name
       value: GameController
-      objectReference: {fileID: 0}
-    - target: {fileID: 5116450192473893917, guid: 513e4937a47f9504fa5ebb7ac488ce17, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
