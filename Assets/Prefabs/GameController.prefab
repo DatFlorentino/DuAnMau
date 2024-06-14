@@ -121,7 +121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1347939160773904724
 RectTransform:
   m_ObjectHideFlags: 0
@@ -869,7 +869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3220618779929264133
 Transform:
   m_ObjectHideFlags: 0
@@ -1958,9 +1958,9 @@ RectTransform:
   - {fileID: 479090422977973688}
   m_Father: {fileID: 1077731698659686446}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 420.62085, y: 20.19915}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 418.87103, y: 0}
   m_SizeDelta: {x: 852.4, y: 49.6017}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &8503501474896263243
@@ -2065,11 +2065,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343955399906326786, guid: 0e0bb5a6744e6234f9bd0dab934704b5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8343955399906326786, guid: 0e0bb5a6744e6234f9bd0dab934704b5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8624489748255917020, guid: 0e0bb5a6744e6234f9bd0dab934704b5, type: 3}
       propertyPath: m_Name
@@ -2077,15 +2077,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8672609828732128643, guid: 0e0bb5a6744e6234f9bd0dab934704b5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8672609828732128643, guid: 0e0bb5a6744e6234f9bd0dab934704b5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8672609828732128643, guid: 0e0bb5a6744e6234f9bd0dab934704b5, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
